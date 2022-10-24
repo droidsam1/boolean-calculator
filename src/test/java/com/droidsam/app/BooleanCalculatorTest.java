@@ -17,6 +17,10 @@ public class BooleanCalculatorTest {
         return Stream.of(Arguments.of("NOT TRUE", false), Arguments.of("NOT FALSE", true));
     }
 
+    private static Stream<Arguments> shouldAcceptTheAndOperator() {
+        return Stream.of(Arguments.of("TRUE AND FALSE", false), Arguments.of("TRUE AND TRUE", true));
+    }
+
     @ParameterizedTest
     @MethodSource()
     public void shouldAcceptSingleValuesAsInput(String input, boolean expected) {
@@ -26,6 +30,12 @@ public class BooleanCalculatorTest {
     @ParameterizedTest
     @MethodSource()
     public void shouldAcceptTheNotOperator(String input, boolean expected) {
+        Assertions.assertEquals(expected, BooleanCalculator.evaluate(input));
+    }
+
+    @ParameterizedTest
+    @MethodSource()
+    public void shouldAcceptTheAndOperator(String input, boolean expected) {
         Assertions.assertEquals(expected, BooleanCalculator.evaluate(input));
     }
 }
