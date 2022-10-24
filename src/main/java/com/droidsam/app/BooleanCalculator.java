@@ -4,6 +4,6 @@ public class BooleanCalculator {
 
 
     public static boolean evaluate(String input) {
-        return true;
+        return Boolean.parseBoolean(input);
     }
 }
