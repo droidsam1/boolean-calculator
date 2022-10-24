@@ -25,6 +25,13 @@ public class BooleanCalculatorTest {
         return Stream.of(Arguments.of("TRUE OR FALSE", true), Arguments.of("TRUE OR TRUE", true), Arguments.of("FALSE OR FALSE", false));
     }
 
+    private static Stream<Arguments> shouldAcceptAnyNumberOfAndOrOperators() {
+        return Stream.of(Arguments.of("TRUE OR NOT FALSE AND TRUE", true),//
+                Arguments.of("TRUE AND NOT FALSE OR FALSE", false),//
+                Arguments.of("TRUE OR TRUE OR TRUE AND FALSE", true),//
+                Arguments.of("TRUE OR FALSE AND NOT FALSE", true),//
+                Arguments.of("TRUE OR NOT FALSE AND NOT FALSE", true));
+    }
 
     @ParameterizedTest
     @MethodSource()
@@ -47,6 +54,12 @@ public class BooleanCalculatorTest {
     @ParameterizedTest
     @MethodSource()
     public void shouldAcceptTheOrOperator(String input, boolean expected) {
+        Assertions.assertEquals(expected, BooleanCalculator.evaluate(input));
+    }
+
+    @ParameterizedTest
+    @MethodSource()
+    public void shouldAcceptAnyNumberOfAndOrOperators(String input, boolean expected) {
         Assertions.assertEquals(expected, BooleanCalculator.evaluate(input));
     }
 }

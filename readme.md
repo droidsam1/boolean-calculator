@@ -22,7 +22,7 @@ Supports the __OR__ operator:\
 ``"FALSE OR FALSE" -> false``
 
 Supports any number of __AND__ and __OR__, giving precedence to __NOT__ then __AND__ and, eventually, the __OR__ operation:\
-``"TRUE OR TRUE OR TURE AND FALSE" -> true``\
+``"TRUE OR TRUE OR TRUE AND FALSE" -> true``\
 ``"TRUE OR FALSE AND NOT FALSE" -> true``
 
 Supports parentheses:\
