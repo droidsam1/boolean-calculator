@@ -9,6 +9,12 @@ public class BooleanCalculator {
         for (String operand : operands) {
             result &= parseBoolean(operand);
         }
+        
+        operands = input.toLowerCase().split("or");
+        for (String operand : operands) {
+            result |= parseBoolean(operand);
+        }
+
         return result;
     }
 
