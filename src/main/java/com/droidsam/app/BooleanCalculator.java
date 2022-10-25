@@ -8,12 +8,11 @@ public class BooleanCalculator {
     }
 
     private static String processParentheses(String input) {
-        if (!input.contains("(")) {
-            return input;
+        while (input.contains("(")) {
+            String nestedOperation = input.substring(input.lastIndexOf("("), input.indexOf(")", input.lastIndexOf("(")) + 1);
+            input = input.replace(nestedOperation, Boolean.toString(evaluateOperators(nestedOperation.replace("(", "").replace(")", ""))));
         }
-        String nestedOperation = input.substring(input.lastIndexOf("("), input.indexOf(")", input.lastIndexOf("("))+1);
-
-        return input.replace(nestedOperation, Boolean.toString(evaluateOperators(nestedOperation.replace("(", "").replace(")", ""))));
+        return input;
     }
 
     private static boolean evaluateOperators(String input) {

@@ -38,7 +38,8 @@ public class BooleanCalculatorTest {
                 Arguments.of("(FALSE)", false),//
                 Arguments.of("(TRUE OR FALSE) AND TRUE", true),//
                 Arguments.of("(TRUE OR TRUE OR TRUE) AND FALSE", false),//
-                Arguments.of("NOT(TRUE AND TRUE)", false)//
+                Arguments.of("NOT(TRUE AND TRUE)", false),//
+                Arguments.of("(TRUE AND (FALSE OR TRUE)) AND TRUE", true)//
         );
     }
 
