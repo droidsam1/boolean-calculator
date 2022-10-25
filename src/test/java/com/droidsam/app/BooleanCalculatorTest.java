@@ -33,6 +33,11 @@ public class BooleanCalculatorTest {
                 Arguments.of("TRUE OR NOT FALSE AND NOT FALSE", true));
     }
 
+    private static Stream<Arguments> shouldAcceptParentheses() {
+        return Stream.of(Arguments.of("(TRUE)", true), Arguments.of("(FALSE)", false));
+    }
+
+
     @ParameterizedTest
     @MethodSource()
     public void shouldAcceptSingleValuesAsInput(String input, boolean expected) {
@@ -60,6 +65,12 @@ public class BooleanCalculatorTest {
     @ParameterizedTest
     @MethodSource()
     public void shouldAcceptAnyNumberOfAndOrOperators(String input, boolean expected) {
+        Assertions.assertEquals(expected, BooleanCalculator.evaluate(input));
+    }
+
+    @ParameterizedTest
+    @MethodSource()
+    public void shouldAcceptParentheses(String input, boolean expected) {
         Assertions.assertEquals(expected, BooleanCalculator.evaluate(input));
     }
 }
