@@ -34,7 +34,12 @@ public class BooleanCalculatorTest {
     }
 
     private static Stream<Arguments> shouldAcceptParentheses() {
-        return Stream.of(Arguments.of("(TRUE)", true), Arguments.of("(FALSE)", false));
+        return Stream.of(Arguments.of("(TRUE)", true), //
+                Arguments.of("(FALSE)", false),//
+                Arguments.of("(TRUE OR FALSE) AND TRUE", true),//
+                Arguments.of("(TRUE OR TRUE OR TRUE) AND FALSE", false),//
+                Arguments.of("NOT(TRUE AND TRUE)", false)//
+        );
     }
 
 

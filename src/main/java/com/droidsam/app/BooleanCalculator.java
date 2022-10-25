@@ -4,7 +4,16 @@ public class BooleanCalculator {
 
 
     public static boolean evaluate(String input) {
-        return evaluateOperators(input.replace("(", "").replace(")", ""));
+        return evaluateOperators(processParentheses(input));
+    }
+
+    private static String processParentheses(String input) {
+        if (!input.contains("(")) {
+            return input;
+        }
+        String nestedOperation = input.substring(input.lastIndexOf("("), input.indexOf(")", input.lastIndexOf("("))+1);
+
+        return input.replace(nestedOperation, Boolean.toString(evaluateOperators(nestedOperation.replace("(", "").replace(")", ""))));
     }
 
     private static boolean evaluateOperators(String input) {
